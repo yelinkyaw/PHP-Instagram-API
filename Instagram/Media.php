@@ -52,16 +52,26 @@ class Media extends \Instagram\Core\BaseObjectAbstract {
      */
     protected $tags = null;
 
-    /**
-     * Get Media Type: image and video
+	/**
+     * Get id
+     *
+     * @return string
+     * @access public
+     */
+    public function getMediaId() {
+        return $this->data->id;
+    }
+	
+	/**
+     * Get the type
      *
      * @return string
      * @access public
      */
     public function getMediaType() {
-       return $this->data->type;
+        return $this->data->type;
     }
-
+	
     /**
      * Get the thumbnail
      *
@@ -90,6 +100,34 @@ class Media extends \Instagram\Core\BaseObjectAbstract {
      */
     public function getLowRes() {
         return $this->data->images->low_resolution;
+    }
+	
+    /**
+     * Get the standard resolution video
+     *
+     * @return string
+     * @access public
+     */
+    public function getStandardResVideo() {
+		if($this->data->type=="video")
+		{
+        	return $this->data->videos->standard_resolution;
+		}
+		return null;
+    }
+
+    /**
+     * Get the low resolution video
+     *
+     * @return string
+     * @access public
+     */
+    public function getLowResVideo() {
+		if($this->data->type=="video")
+		{
+        	return $this->data->videos->low_resolution;
+		}
+		return null;
     }
 
     /**
