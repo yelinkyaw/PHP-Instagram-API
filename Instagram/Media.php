@@ -53,6 +53,16 @@ class Media extends \Instagram\Core\BaseObjectAbstract {
     protected $tags = null;
 
     /**
+     * Get Media Type: image and video
+     *
+     * @return string
+     * @access public
+     */
+    public function getMediaType() {
+       return $this->data->type;
+    }
+
+    /**
      * Get the thumbnail
      *
      * @return string
